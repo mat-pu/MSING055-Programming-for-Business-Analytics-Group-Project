@@ -13,7 +13,7 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth,wait_on_rate_limit=True)
 
 # Open/Create a CSV file to append data:
-outfile = open('Brexit.csv', 'a')
+outfile = open('Brexit1.csv', 'a')
 
 # Use CSV writer to impute data to the CSV file:
 csv_write = csv.writer(outfile)
