@@ -29,8 +29,8 @@ csv_write.writerow(["tweet_id",
                     "retweets",
                     "user_location"])
 
-# Search restricted to 400 most recent tweets in English containing the hashtag 'brexit'
-for tweet in tweepy.Cursor(api.search, q="#brexit", lang="en").items(400):
+# Search restricted to 1000 most recent tweets in English containing the hashtag 'brexit'
+for tweet in tweepy.Cursor(api.search, q="#brexit", lang="en").items(1000):
      csv_write.writerow([tweet.id,
                          tweet.author.screen_name,
                          tweet.author.followers_count,
