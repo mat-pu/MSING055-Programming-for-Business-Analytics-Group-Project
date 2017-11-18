@@ -2,6 +2,7 @@ import tweepy
 import csv
 import pandas as pd
 
+# Enter authentification credentials:
 consumer_key = 'CONSUMER_KEY'
 consumer_secret = 'CONSUMER_SECRET'
 access_token = 'ACCESS_TOKEN'
@@ -11,11 +12,13 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth,wait_on_rate_limit=True)
 
-# Open/Create a CSV file to append data
+# Open/Create a CSV file to append data:
 outfile = open('Brexit.csv', 'a')
 
-# Use csv writer
+# Use CSV writer to impute data to the CSV file:
 csv_write = csv.writer(outfile)
+
+# Create header row for our data:
 csv_write.writerow(["tweet_id",
                     "username",
                     "number_of_followers",
@@ -26,6 +29,7 @@ csv_write.writerow(["tweet_id",
                     "retweets",
                     "user_location"])
 
+# Search restricted to 400 tweets containing the hashtag 'brexit'
 for tweet in tweepy.Cursor(api.search, q="#brexit", lang="en").items(400):
      csv_write.writerow([tweet.id,
                          tweet.author.screen_name,
