@@ -12,11 +12,11 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth,wait_on_rate_limit=True)
 
-# Open CSV file to append new rows (i.e., the actual data):
+# Open CSV file to append new rows with data (based on the query):
 with open('Brexit_data.csv', 'a') as outfile:
   # Searching a selected number of tweets (e.g., 100) about a specific topic in connection to brexit (e.g., stock market)
   # Restriction on date/period
-    for tweet in tweepy.Cursor(api.search, q="brexit AND <search term>",lang="en",since = "2017-11-14").items(100):
+    for tweet in tweepy.Cursor(api.search, q="brexit AND <search term>",lang="en",since="2017-11-11", until="2017-11-18").items(100):
       # Using CSV writer to inpute new rows with data:
         csv_write = csv.writer(outfile, delimiter=',', quotechar='"')
         csv_write.writerow([tweet.id, 
