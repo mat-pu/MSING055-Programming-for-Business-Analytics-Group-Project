@@ -1,14 +1,18 @@
 import csv
-# Creating a new CSV file:
-outfile = open('Brexit_NEW.csv', 'w')
-csv_write = csv.writer(outfile, delimiter=',')
-# First row used for column headings:
+
+outfile = open('Brexit_.csv', 'w')
+csv_write = csv.writer(outfile)
 csv_write.writerow(["tweet_id",
                     "username",
+                    "verified",
                     "followers",
                     "created_at",
                     "tweet_text",
-                    "source",
+                    "reply_to_user",
+                    "reply_to_tweet",
+                    "platform",
+                    "quoted",
+                    "retweeted",
                     "likes",
                     "retweets",
                     "user_location"])
